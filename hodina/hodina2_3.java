@@ -1,5 +1,5 @@
 package hodina;
-import java.util.ArrayList;;
+import java.util.ArrayList;
 public class hodina2_3 {
     public static long tic(){
         long aktualni_cas = System.currentTimeMillis();
