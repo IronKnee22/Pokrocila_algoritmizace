@@ -1,30 +1,36 @@
 package hodina;
 
 public class VectorOperations {
-    public static int[][] Floyd(int[][] matrix, int k){
-        for(int i = 0; i< matrix.length;i++){
-            for(int j = 0; j < matrix.length;j++){
-                if(matrix[k][j] + matrix[j][k] < matrix[i][j]){
-                    matrix[i][j] = matrix[k][j] + matrix[j][k];
+   public static int[][] floydWarshall(int[][] matrix) {
+    int N = matrix.length;
+    int[][] result = new int[N][N];
+
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) {
+            result[i][j] = matrix[i][j];
+        }
+    }
+
+    for (int k = 0; k < N; k++) {
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+                if (result[i][k] != Integer.MAX_VALUE && result[k][j] != Integer.MAX_VALUE) {
+                    result[i][j] = Math.min(result[i][j], result[i][k] + result[k][j]);
                 }
             }
         }
-        return matrix;
     }
 
-    public static int[][] next_Floyd(int[][] matrix){
-        for(int k = 0; k< matrix.length;k++){
-            Floyd(matrix, k);
-        }
-        return matrix;
-    }
+    return result;
+}
 
     public static int[][] generateD() {
         int[][] matrix = {
-            {0, 3, Integer.MAX_VALUE, 7},
-            {8, 0, 2, Integer.MAX_VALUE},
-            {5, Integer.MAX_VALUE, 0, 1},
-            {2, Integer.MAX_VALUE, Integer.MAX_VALUE, 0}
+            {0, 20, Integer.MAX_VALUE, 3,Integer.MAX_VALUE},
+            {Integer.MAX_VALUE, 0, Integer.MAX_VALUE, Integer.MAX_VALUE,1},
+            {8, Integer.MAX_VALUE, 0, Integer.MAX_VALUE,3},
+            {Integer.MAX_VALUE, 5, 4, 0,Integer.MAX_VALUE},
+            {Integer.MAX_VALUE,Integer.MAX_VALUE,Integer.MAX_VALUE,2,0}
         };
         return matrix;
     }

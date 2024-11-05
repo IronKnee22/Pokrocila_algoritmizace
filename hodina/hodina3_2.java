@@ -7,9 +7,9 @@ public class hodina3_2 {
         int[][] matice = VectorOperations.generateD();
         VectorOperations.printMatrix(matice);
 
-        VectorOperations.next_Floyd(matice);
+        int[][] result = VectorOperations.floydWarshall(matice);
         System.out.println();
-        VectorOperations.printMatrix(matice);
+        VectorOperations.printMatrix(result);
     }
     
 }
